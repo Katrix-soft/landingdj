@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  landing-dj:
+    build: .
+    container_name: landing-dj
+    restart: always
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=dj.katrix.com.ar
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=dj.katrix.com.ar
+      - LETSENCRYPT_EMAIL=exe20@gmail.com # Reemplazar con tu email real
+    networks:
+      - npm-network
+
+networks:
+  npm-network:
+    external: true
+    name: bridge # Si tu Nginx Proxy Manager está en el bridge por defecto, usamos este.

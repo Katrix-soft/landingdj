@@ -1,0 +1,27 @@
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden" data-purpose="hero-section"
+    id="inicio">
+    <div class="absolute inset-0 z-0 bg-black">
+        <video #bgVideo src="/video.mp4" autoplay [muted]="true" loop playsinline preload="auto"
+            class="w-full h-full object-cover">
+        </video>
+        <div class="absolute inset-0 hero-overlay"></div>
+    </div>
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in-up mt-auto mb-20">
+        <!-- <h1 class="text-5xl md:text-8xl font-bold text-white mb-6 tracking-tight">
+            SAAVEDRA <br /> <span class="text-brand">PRODUCCIONES</span>
+        </h1> -->
+        <p class="text-xl md:text-2xl text-gray-300 mb-10 font-light max-w-2xl mx-auto">
+            Hacemos de tu evento un momento inolvidable. Producción profesional para experiencias extraordinarias.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a class="bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-custom text-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-brand/20"
+                href="#disponibilidad">
+                Ver Disponibilidad
+            </a>
+            <a class="bg-transparent border-2 border-white/20 hover:border-brand text-white px-8 py-4 rounded-custom text-lg font-semibold transition-all"
+                href="#servicios">
+                Nuestros Servicios
+            </a>
+        </div>
+    </div>
+</section>

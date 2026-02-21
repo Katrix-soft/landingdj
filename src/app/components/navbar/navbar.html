@@ -1,0 +1,50 @@
+<nav class="fixed w-full z-50 bg-deep/80 backdrop-blur-md border-b border-white/10" data-purpose="main-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <img src="/logo.png" alt="Saavedra Producciones Logo"
+                    class="h-14 w-14 object-cover rounded-full border-2 border-brand shadow-lg shadow-brand/20">
+                <div class="flex flex-col leading-[0.8] py-1">
+                    <span class="text-logo text-xl md:text-2xl font-black italic tracking-tighter uppercase">
+                        Saavedra
+                    </span>
+                    <span
+                        class="text-logo text-[10px] md:text-xs font-bold italic tracking-[0.3em] uppercase opacity-90">
+                        Producciones
+                    </span>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-8">
+                    <a class="hover:text-brand px-3 py-2 text-sm font-medium transition-colors"
+                        href="#inicio">Inicio</a>
+                    <a class="hover:text-brand px-3 py-2 text-sm font-medium transition-colors"
+                        href="#servicios">Servicios</a>
+                    <a class="hover:text-brand px-3 py-2 text-sm font-medium transition-colors"
+                        href="#disponibilidad">Disponibilidad</a>
+                    <a class="hover:text-brand px-3 py-2 text-sm font-medium transition-colors"
+                        href="#contacto">Contacto</a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button (click)="toggleMenu()" aria-label="Menu"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-brand focus:outline-none"
+                    type="button">
+                    <span class="material-symbols-outlined">{{ isMenuOpen ? 'close' : 'menu' }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div [class.hidden]="!isMenuOpen" class="md:hidden bg-deep border-b border-white/10 px-4 py-4 space-y-2">
+        <a (click)="isMenuOpen = false" class="block hover:text-brand px-3 py-2 text-base font-medium transition-colors"
+            href="#inicio">Inicio</a>
+        <a (click)="isMenuOpen = false" class="block hover:text-brand px-3 py-2 text-base font-medium transition-colors"
+            href="#servicios">Servicios</a>
+        <a (click)="isMenuOpen = false" class="block hover:text-brand px-3 py-2 text-base font-medium transition-colors"
+            href="#disponibilidad">Disponibilidad</a>
+        <a (click)="isMenuOpen = false" class="block hover:text-brand px-3 py-2 text-base font-medium transition-colors"
+            href="#contacto">Contacto</a>
+    </div>
+</nav>
