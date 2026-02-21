@@ -12,12 +12,8 @@ services:
       - LETSENCRYPT_EMAIL=exe20@gmail.com
     networks:
       - npm_network
-      - bridge
 
 networks:
   npm_network:
     external: true
     name: npm_network
-  bridge:
-    external: true
-    name: bridge
