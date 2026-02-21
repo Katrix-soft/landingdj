@@ -4,7 +4,7 @@ services:
     container_name: landing-dj
     restart: always
     ports:
-      - "8080:80" # Esto te permite probar http://IP-DEL-SERVIDOR:8080
+      - "8888:80" # Puedes entrar por http://IP:8888 para probar
     environment:
       - VIRTUAL_HOST=dj.katrix.com.ar
       - VIRTUAL_PORT=80
