@@ -21,7 +21,7 @@ export class CalendarComponent implements OnInit {
   isSending = false;
   showSuccess = false;
   isCustomTime = false;
-  
+
   private readonly SLOT_DURATION = 120; // 2 hours
   private readonly DAY_MINUTES = 1440;
 
@@ -265,11 +265,8 @@ export class CalendarComponent implements OnInit {
 
   availablePacks = [
     { id: 'all', name: 'TODO (PACK COMPLETO)', icon: 'auto_awesome' },
-    { id: 'sonido', name: 'Sonido Profesional', icon: 'volume_up' },
     { id: 'iluminacion', name: 'Iluminación DJ', icon: 'lightbulb' },
-    { id: 'pantalla', name: 'Pantalla LED / TV', icon: 'screenshot_monitor' },
-    { id: 'fx', name: 'Efectos Especiales', icon: 'celebration' },
-    { id: 'fotos', name: 'Foto y Video', icon: 'photo_camera' }
+    { id: 'djs', name: 'DJ\'s Profesionales', icon: 'headphones' }
   ];
 
   togglePack(packId: string) {

@@ -239,11 +239,11 @@
                                 obligatorio</div>
                         </div>
 
-                        <!-- Selección de Packs/Servicios -->
+                        <!-- Selección de Packs/Servicios Simplificada -->
                         <div class="space-y-3 md:col-span-2">
                             <label class="text-sm font-black tracking-widest text-gray-400 uppercase">¿Qué servicios te
                                 interesan?</label>
-                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <button *ngFor="let pack of availablePacks" (click)="togglePack(pack.id)"
                                     [class.bg-brand]="isPackSelected(pack.id)"
                                     [class.text-white]="isPackSelected(pack.id)"
@@ -251,19 +251,27 @@
                                     [class.bg-white\/5]="!isPackSelected(pack.id)"
                                     [class.text-gray-400]="!isPackSelected(pack.id)"
                                     [class.border-white\/10]="!isPackSelected(pack.id)"
-                                    [class.col-span-2]="pack.id === 'all'" [class.sm:col-span-1]="pack.id === 'all'"
-                                    type="button"
-                                    class="relative flex flex-col items-center justify-center p-4 rounded-2xl border transition-all duration-300 hover:border-brand/50 group">
-                                    <span
-                                        class="material-symbols-outlined mb-2 text-2xl group-hover:scale-110 transition-transform"
-                                        [class.text-brand]="pack.id === 'all' && !isPackSelected(pack.id)">{{
-                                        pack.icon }}</span>
-                                    <span
-                                        class="text-[10px] font-extrabold uppercase tracking-tighter text-center leading-tight">{{
-                                        pack.name }}</span>
+                                    [class.ring-2]="isPackSelected(pack.id)"
+                                    [class.ring-brand/30]="isPackSelected(pack.id)" type="button"
+                                    class="relative flex flex-col items-center justify-center p-6 rounded-2xl border transition-all duration-300 hover:border-brand/50 group overflow-hidden">
+
+                                    <!-- Background Glow on Toggle -->
                                     <div *ngIf="isPackSelected(pack.id)"
-                                        class="absolute top-2 right-2 flex items-center justify-center animate-fade-in-up">
-                                        <span class="material-symbols-outlined text-sm text-white">check_circle</span>
+                                        class="absolute inset-0 bg-brand/10 animate-pulse"></div>
+
+                                    <span
+                                        class="material-symbols-outlined mb-3 text-3xl group-hover:scale-110 transition-transform relative z-10"
+                                        [class.text-brand]="pack.id === 'all' && !isPackSelected(pack.id)">
+                                        {{ pack.icon }}
+                                    </span>
+                                    <span
+                                        class="text-xs font-black uppercase tracking-widest text-center leading-tight relative z-10">
+                                        {{ pack.name }}
+                                    </span>
+
+                                    <div *ngIf="isPackSelected(pack.id)"
+                                        class="absolute top-3 right-3 flex items-center justify-center animate-fade-in-up z-10">
+                                        <span class="material-symbols-outlined text-lg text-white">check_circle</span>
                                     </div>
                                 </button>
                             </div>
