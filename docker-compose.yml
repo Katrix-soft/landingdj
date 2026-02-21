@@ -11,9 +11,9 @@ services:
       - LETSENCRYPT_HOST=dj.katrix.com.ar
       - LETSENCRYPT_EMAIL=exe20@gmail.com
     networks:
-      - saavedra_net
+      - npm_network
 
 networks:
-  saavedra_net:
-    driver: bridge
-    name: saavedra_network # Esto crea una red "User-Defined" que sí soporta alias
+  npm_network:
+    external: true
+    name: npm_network # Usamos tu red existente donde está el proxy
