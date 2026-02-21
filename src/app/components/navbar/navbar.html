@@ -36,15 +36,39 @@
         </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div [class.hidden]="!isMenuOpen" class="md:hidden bg-deep border-b border-white/10 px-4 py-4 space-y-2">
-        <a (click)="isMenuOpen = false" class="block hover:text-brand px-3 py-2 text-base font-medium transition-colors"
-            href="#inicio">Inicio</a>
-        <a (click)="isMenuOpen = false" class="block hover:text-brand px-3 py-2 text-base font-medium transition-colors"
-            href="#servicios">Servicios</a>
-        <a (click)="isMenuOpen = false" class="block hover:text-brand px-3 py-2 text-base font-medium transition-colors"
-            href="#disponibilidad">Disponibilidad</a>
-        <a (click)="isMenuOpen = false" class="block hover:text-brand px-3 py-2 text-base font-medium transition-colors"
-            href="#contacto">Contacto</a>
+    <!-- Mobile Menu con animación suave -->
+    <div class="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+        [style.max-height]="isMenuOpen ? '300px' : '0'" [class.opacity-0]="!isMenuOpen" [class.opacity-100]="isMenuOpen"
+        class="bg-deep/95 backdrop-blur-xl border-b border-white/10">
+        <div class="px-4 py-6 space-y-4">
+            <a (click)="isMenuOpen = false"
+                class="flex items-center gap-3 hover:text-brand px-3 py-2 text-lg font-bold transition-all transform"
+                [class.translate-x-0]="isMenuOpen" [class.-translate-x-full]="!isMenuOpen"
+                style="transition-delay: 100ms" href="#inicio">
+                <span class="material-symbols-outlined text-brand">home</span>
+                Inicio
+            </a>
+            <a (click)="isMenuOpen = false"
+                class="flex items-center gap-3 hover:text-brand px-3 py-2 text-lg font-bold transition-all transform"
+                [class.translate-x-0]="isMenuOpen" [class.-translate-x-full]="!isMenuOpen"
+                style="transition-delay: 150ms" href="#servicios">
+                <span class="material-symbols-outlined text-brand">auto_awesome</span>
+                Servicios
+            </a>
+            <a (click)="isMenuOpen = false"
+                class="flex items-center gap-3 hover:text-brand px-3 py-2 text-lg font-bold transition-all transform"
+                [class.translate-x-0]="isMenuOpen" [class.-translate-x-full]="!isMenuOpen"
+                style="transition-delay: 200ms" href="#disponibilidad">
+                <span class="material-symbols-outlined text-brand">calendar_month</span>
+                Disponibilidad
+            </a>
+            <a (click)="isMenuOpen = false"
+                class="flex items-center gap-3 hover:text-brand px-3 py-2 text-lg font-bold transition-all transform"
+                [class.translate-x-0]="isMenuOpen" [class.-translate-x-full]="!isMenuOpen"
+                style="transition-delay: 250ms" href="#contacto">
+                <span class="material-symbols-outlined text-brand">mail</span>
+                Contacto
+            </a>
+        </div>
     </div>
 </nav>
