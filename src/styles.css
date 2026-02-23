@@ -9,15 +9,15 @@
 
   /* Custom Scrollbar Premium */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-deep;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-white/10 rounded-full border-2 border-solid border-deep transition-colors hover:bg-brand;
+    @apply bg-white/20 rounded-full border-2 border-solid border-transparent bg-clip-padding transition-colors hover:bg-brand;
   }
 
   /* Smooth Selection */

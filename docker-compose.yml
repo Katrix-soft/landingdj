@@ -16,5 +16,4 @@ services:
 networks:
   npm_network:
     external: true
-    driver: bridge
     name: npm_network
