@@ -5,11 +5,12 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
 
   /* Custom Scrollbar Premium */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -17,7 +18,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-white/20 rounded-full border-2 border-solid border-transparent bg-clip-padding transition-colors hover:bg-brand;
+    @apply bg-white/20 rounded-full border-2 border-solid border-transparent bg-clip-padding;
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand;
   }
 
   /* Smooth Selection */
@@ -29,12 +35,27 @@
   :focus-visible {
     @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-deep transition-all;
   }
+
+  /* Transición global suave para todos los elementos interactivos */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
 }
+
+/* =========================================
+   ANIMACIONES DE ENTRADA (Scroll Reveal)
+   ========================================= */
 
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(28px);
   }
 
   to {
@@ -43,19 +64,97 @@
   }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-.hero-overlay {
-  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8));
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Clases de animación reutilizables */
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Delays escalonados para secuencias */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* =========================================
+   HERO OVERLAY
+   ========================================= */
+
+.hero-overlay {
+  background: linear-gradient(to bottom,
+      rgba(10, 10, 10, 0.3) 0%,
+      rgba(10, 10, 10, 0.6) 60%,
+      rgba(10, 10, 10, 0.92) 100%);
+}
+
+/* =========================================
+   CALENDARIO
+   ========================================= */
 
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
-  /* Slightly more gap for better touch */
 }
 
 @media (max-width: 640px) {
@@ -64,18 +163,31 @@
   }
 }
 
+/* Días del calendario: transición suave al hover */
+.calendar-grid button {
+  transition: transform 150ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
+}
+
+/* =========================================
+   MATERIAL ICONS
+   ========================================= */
+
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
+/* =========================================
+   TEXT LOGO (gradiente con scanlines)
+   ========================================= */
+
 .text-logo {
-  /* Creamos el degradado de naranja a amarillo */
   background: linear-gradient(to right, #f97316, #fbbf24);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* El efecto de líneas de barrido */
   position: relative;
   display: inline-block;
 
@@ -83,19 +195,19 @@
     content: "";
     position: absolute;
     inset: 0;
-    /* Creamos líneas horizontales transparentes */
     background: repeating-linear-gradient(0deg,
         transparent,
         transparent 2px,
         #121212 2px,
-        /* El color del fondo (deep) para "cortar" la letra */
         #121212 4px);
-    /* Ajustamos la opacidad para que no borre la letra, solo le dé textura */
     opacity: 0.3;
   }
 }
 
-/* Ocultar flecha nativa de selects */
+/* =========================================
+   SELECTS
+   ========================================= */
+
 select {
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
@@ -107,7 +219,21 @@ select::-ms-expand {
   display: none !important;
 }
 
-/* Evitar que el navbar fijo tape las secciones al navegar */
+/* =========================================
+   SCROLL MARGIN (navbar fijo)
+   ========================================= */
+
 section[id] {
   scroll-margin-top: 80px;
+}
+
+/* =========================================
+   GLASSMORPHISM UTILITY
+   ========================================= */
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }

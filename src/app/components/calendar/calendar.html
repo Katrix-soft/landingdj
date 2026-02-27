@@ -65,7 +65,10 @@
                                     <span class="font-bold text-white uppercase tracking-widest text-sm">{{ monthName
                                         }}</span>
                                     <div class="flex gap-2">
-                                        <button (click)="prevMonth()" class="p-1 hover:text-brand transition-colors"
+                                        <button (click)="prevMonth()" [disabled]="isPastMonth()"
+                                            [class.opacity-25]="isPastMonth()"
+                                            [class.cursor-not-allowed]="isPastMonth()"
+                                            class="p-1 hover:text-brand transition-colors disabled:hover:text-current"
                                             type="button"><span
                                                 class="material-symbols-outlined">chevron_left</span></button>
                                         <button (click)="nextMonth()" class="p-1 hover:text-brand transition-colors"
@@ -88,12 +91,12 @@
                                         [disabled]="isUnavailable(day)" [class.!bg-brand]="isSelected(day)"
                                         [class.!text-white]="isSelected(day)" [class.!border-brand]="isSelected(day)"
                                         [class.bg-gray-800]="isUnavailable(day)"
-                                        [class.text-gray-500]="isUnavailable(day)"
+                                        [class.text-gray-600]="isUnavailable(day)"
                                         [class.cursor-not-allowed]="isUnavailable(day)"
-                                        [class.line-through]="isUnavailable(day)"
+                                        [class.line-through]="isPastDate(day)" [class.opacity-30]="isPastDate(day)"
                                         [style.background-color]="isSelected(day) ? '' : (dayMetrics[day]?.bg || '')"
                                         [style.border-color]="isSelected(day) ? '' : (dayMetrics[day]?.border || '')"
-                                        class="h-10 flex items-center justify-center text-sm rounded-custom hover:bg-white/10 transition-colors border border-transparent relative z-10 transform hover:scale-110 active:scale-95"
+                                        class="h-10 flex items-center justify-center text-sm rounded-custom hover:bg-white/10 transition-all border border-transparent relative z-10 transform hover:scale-110 active:scale-95"
                                         type="button">
                                         {{ day }}
                                     </button>

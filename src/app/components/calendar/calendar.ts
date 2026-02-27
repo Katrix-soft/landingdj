@@ -105,7 +105,15 @@ export class CalendarComponent implements OnInit {
     });
   }
 
+  isPastMonth(): boolean {
+    const today = new Date();
+    return this.currentDate.getFullYear() < today.getFullYear() ||
+      (this.currentDate.getFullYear() === today.getFullYear() &&
+        this.currentDate.getMonth() <= today.getMonth());
+  }
+
   prevMonth() {
+    if (this.isPastMonth()) return; // No permitir ir antes del mes actual
     this.currentDate.setMonth(this.currentDate.getMonth() - 1);
     this.renderCalendar();
   }
@@ -115,8 +123,15 @@ export class CalendarComponent implements OnInit {
     this.renderCalendar();
   }
 
+  isPastDate(day: number): boolean {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const dateToCheck = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
+    return dateToCheck < today;
+  }
+
   selectDate(day: number) {
-    if (this.isUnavailable(day)) return;
+    if (this.isUnavailable(day) || this.isPastDate(day)) return;
 
     this.selectedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
 
@@ -246,7 +261,7 @@ export class CalendarComponent implements OnInit {
   }
 
   isUnavailable(day: number): boolean {
-    return this.unavailableDates.includes(day);
+    return this.unavailableDates.includes(day) || this.isPastDate(day);
   }
 
   isPartiallyAvailable(day: number): boolean {
